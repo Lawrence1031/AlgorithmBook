@@ -1,0 +1,24 @@
+// 팩토리얼
+static int Factorial(int start, int end)
+{
+    int result = 1;
+    
+    for (int i = start; i <= end; i++)
+    {
+    	result *= i;
+    }
+    
+    return result;
+}
+
+// 순열
+static int Permutation(int n, int r)
+{
+    return Factorial(1, n) / Factorial(1, (n - r));
+}
+
+// 조합
+static int Combination(int n, int r)
+{
+    return Factorial(1, n) / (Factorial(1, (n - r)) * Factorial(1, r));
+}
