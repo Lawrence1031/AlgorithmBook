@@ -7,7 +7,7 @@ static bool IsPrime(int n)
     
     int sqrt = (int)Math.Floor(Math.Sqrt(n));
     
-    for (int i = 3; i <= sqrt; i++)
+    for (int i = 3; i <= sqrt; i += 2)
     {
         if (n % i == 0) return false;
     }
