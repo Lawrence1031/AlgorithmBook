@@ -1,0 +1,17 @@
+static void Main(string[] args)
+{
+    bool[] isPrime = new bool[N + 1]; // N까지의 배열
+    Array.Fill(isPrime, true); // 초기에는 모든 수를 소수로 간주
+    isPrime[0] = isPrime[1] = false; // 0과 1은 소수가 아님
+
+    for (int i = 2; i * i <= N; i++)
+    {
+        if (isPrime[i]) // i가 소수라면
+        {
+            for (int j = i * i; j <= N; j += i) // i의 배수들을 소수가 아님으로 표시
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
