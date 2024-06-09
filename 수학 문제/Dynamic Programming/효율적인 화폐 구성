@@ -1,0 +1,43 @@
+namespace Test04
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] inputs = Console.ReadLine().Split(' ');
+            int N = int.Parse(inputs[0]);
+            int M = int.Parse(inputs[1]);
+            int[] bills = new int[N];
+
+            for (int i = 0; i < N; i++)
+            {
+                bills[i] = int.Parse(Console.ReadLine());
+            }
+
+            // dp 초기화, 0원은 방법이 0개, 그 외에는 불가능한 10001로 표기
+            int[] dp = new int[M + 1];
+            dp[0] = 0;
+            for (int i = 1; i <= M; i++)
+            {
+                dp[i] = 10001;
+            }
+
+            // 각각의 화폐에 대해서
+            for (int i = 0; i < N; i++)
+            {
+                // 해당 화폐에서 M까지를 계산하면서
+                for (int j = bills[i]; j <= M; j++)
+                {
+                    // 해당 화폐를 더할 수 있는 경우에
+                    if (dp[j - bills[i]] != 10001)
+                    {
+                        // 지금의 경우의 수와 해당 화폐를 더한 경우의 수 중 작은 것을 선택
+                        dp[j] = Math.Min(dp[j], dp[j - bills[i]] + 1);
+                    }
+                }
+            }
+
+            Console.WriteLine(dp[M] == 10001 ? -1 : dp[M]);
+        }
+    }
+}
