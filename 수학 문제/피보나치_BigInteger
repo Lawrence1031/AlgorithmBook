@@ -20,7 +20,7 @@ namespace _FiboBigInteger
 
             while (!Fibo.ContainsKey(n))
             {
-                Fibo[cnt] = (Fibo[cnt - 1] + Fibo[cnt - 2]) % 1000000007;
+                Fibo[cnt] = (Fibo[cnt - 1] + Fibo[cnt - 2]);
                 cnt++;
             }
 
