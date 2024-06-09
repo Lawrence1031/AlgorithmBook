@@ -1,0 +1,23 @@
+namespace Test03
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int N = int.Parse(Console.ReadLine());
+            int[] dp = new int[N + 1];
+
+            dp[1] = 1;
+            dp[2] = 2;
+
+            for (int i = 3; i <= N; i++)
+            {
+                // i를 채우는 방법은 i - 1 번째에서 세로로 1칸 채우는 것과
+                // i - 2번째에서 가로로 2칸 혹은 2 X 2로 채우는 것으로 2가지
+                dp[i] = (dp[i - 1] + 2 * dp[i - 2]) % 796796;
+            }
+
+            Console.WriteLine(dp[N]);
+        }
+    }
+}
